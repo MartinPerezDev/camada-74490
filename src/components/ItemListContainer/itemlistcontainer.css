@@ -1,0 +1,14 @@
+.itemlistcontainer{
+  padding: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+.itemlistcontainer .item{
+  width: 300px;
+  border: 2px solid rgb(137, 137, 137);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
