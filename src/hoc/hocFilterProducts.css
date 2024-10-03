@@ -1,0 +1,20 @@
+.filter-products{
+  display: flex;
+  width: 100%;
+}
+.filter-products .filters{
+  width: 30%;
+  height: 500px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.filter-products .filters input {
+  width: 80%;
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 10px;
+}

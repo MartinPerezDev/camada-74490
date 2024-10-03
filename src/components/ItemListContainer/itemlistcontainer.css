@@ -1,4 +1,5 @@
 .itemlistcontainer{
+  width: 70%;
   padding: 50px;
   display: flex;
   flex-direction: column;

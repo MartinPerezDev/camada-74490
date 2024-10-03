@@ -1,6 +1,10 @@
-const ComponenteHijo = () => {
+const ComponenteHijo = ({ titulo, children }) => {
+
   return (
-    <div>ComponenteHijo</div>
+    <div>
+      <h2>{titulo}</h2>
+      <div>{children}</div>
+    </div>
   )
 }
 export default ComponenteHijo

@@ -1,9 +1,18 @@
-const ComponentePadre = ({ children }) => {
+import ComponenteHijo from "./ComponenteHijo"
+
+const ComponentePadre = () => {
   
   return (
-    <div>
-      { children }
-    </div>
+    <>
+      <ComponenteHijo titulo="Mi caja">
+        <p>Contenido personalizado</p>
+        <button>Clickeame</button>
+      </ComponenteHijo>
+
+      <ComponenteHijo titulo="Mi caja 2">
+        <button>Clickeame</button>
+      </ComponenteHijo>
+    </>
   )
 }
 export default ComponentePadre
