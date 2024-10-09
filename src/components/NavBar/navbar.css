@@ -15,6 +15,10 @@
 .categories .category{
   list-style: none;
 }
+.categories .category .text-link:hover{
+  color: #2ECC71;
+  text-decoration: underline;
+}
 
 .brand{
   width: 33.3%;
