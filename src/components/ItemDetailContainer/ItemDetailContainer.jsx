@@ -7,6 +7,7 @@ import { CartContext } from "../../context/CartContext.jsx"
 
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState({})
+  const [hideItemCount, setHideItemCount] = useState(false)
   const { addProductInCart } = useContext(CartContext)
   const { idProduct } = useParams()
 
@@ -14,6 +15,8 @@ const ItemDetailContainer = () => {
     const productCart = { ...product, quantity : count }
 
     addProductInCart(productCart)
+    //estado para mostrar u ocultar ItemCount
+    setHideItemCount(true)
   }
 
   useEffect( ()=> {
@@ -22,7 +25,7 @@ const ItemDetailContainer = () => {
   }, [idProduct] )
 
   return (
-    <ItemDetail product={product} addProduct={addProduct} />
+    <ItemDetail product={product} addProduct={addProduct} hideItemCount={hideItemCount} />
   )
 }
 export default ItemDetailContainer

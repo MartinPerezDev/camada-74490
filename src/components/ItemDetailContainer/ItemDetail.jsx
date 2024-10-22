@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom"
 import ItemCount from "../ItemCount/ItemCount"
 import "./itemdetail.css"
 
-const ItemDetail = ({ product, addProduct }) => {
+const ItemDetail = ({ product, addProduct, hideItemCount }) => {
   return (
     <div className="item-detail">
       <div className="images-detail-container">
@@ -16,7 +17,14 @@ const ItemDetail = ({ product, addProduct }) => {
         <h2 className="title-detail">{product.name}</h2>
         <p className="text-detail">{product.description}</p>
         <p className="text-detail">Precio: ${product.price}</p>
-        <ItemCount stock={product.stock} addProduct={addProduct} />
+        {
+          hideItemCount === true ? (
+            <Link to="/cart">Terminar mi compra</Link>
+          ) : (
+            <ItemCount stock={product.stock} addProduct={addProduct} />
+          )
+        }
+
       </div>
     </div>
   )

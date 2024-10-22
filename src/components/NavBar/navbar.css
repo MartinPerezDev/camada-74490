@@ -44,6 +44,11 @@
 }
 .cartwidget .icon-cartwidget{
   font-size: 30px;
+  color: #2ECC71;
+}
+.cartwidget .empty-cartwidget{
+  font-size: 30px;
+  color: rgb(64, 64, 64);
 }
 .cartwidget .number-cartwidget{
   padding: 0 10px;
