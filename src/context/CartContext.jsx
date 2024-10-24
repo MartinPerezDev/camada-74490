@@ -13,7 +13,15 @@ const CartProvider = ({ children }) => {
       const newCart = cart.map((productCart) => {
         if (productCart.id === newProduct.id) {
           //comprobar que no superemos el stock maximo de ese producto
-          return { ...productCart, quantity: productCart.quantity + newProduct.quantity }
+          
+          const newQuantity = productCart.quantity + newProduct.quantity
+          if(newQuantity > newProduct.stock){
+            alert("estas superando el stock total de este producto")
+            return productCart
+          }else{
+            return { ...productCart, quantity: newQuantity }
+          }
+
         } else {
           return productCart
         }

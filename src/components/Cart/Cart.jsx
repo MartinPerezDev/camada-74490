@@ -1,6 +1,8 @@
 import { useContext } from "react"
 import { CartContext } from "../../context/CartContext"
 import { Link } from "react-router-dom"
+import "./cart.css"
+import { BsFillTrash3Fill } from "react-icons/bs"
 
 const Cart = () => {
   const { cart, totalPrice, deleteProductInCart, deleteCart } = useContext(CartContext)
@@ -8,32 +10,34 @@ const Cart = () => {
   //Early return
   if( cart.length === 0 ){
     return(
-      <div>
-        <h2>No hay productos en el carrito 😥</h2>
-        <Link to="/" >Volver al inicio</Link>
+      <div className="empty-cart">
+        <h2 className="title-empty-cart">Oppps...No hay productos en el carrito 😥</h2>
+        <Link to="/" className="button-home-empty-cart" >Volver al inicio</Link>
       </div>
     )
   }
 
   return (
-    <div >
-      <h1>Productos en el carrito</h1>
+    <div className="cart" >
+      <h1 className="title-cart">Productos en el carrito</h1>
       {
         cart.map( (productCart) => (
-          <div style={{ display: "flex", justifyContent: "space-around" }} key={productCart.id}>
-            <img src={productCart.image} width={100} alt="" />
-            <p>{productCart.name}</p>
-            <p>precio c/u: {productCart.price}</p>
-            <p>cantidad: {productCart.quantity}</p>
-            <p>precio parcial: { productCart.price * productCart.quantity } </p>
-            <button onClick={ () => deleteProductInCart(productCart.id) } >borrar producto</button>
+          <div className="item-cart" key={productCart.id}>
+            <img className="img-item-cart" src={productCart.image} width={100} alt="" />
+            <p className="text-item-cart">{productCart.name}</p>
+            <p className="text-item-cart">precio c/u: ${productCart.price}</p>
+            <p className="text-item-cart">cantidad: {productCart.quantity}</p>
+            <p className="text-item-cart">precio parcial: ${ productCart.price * productCart.quantity } </p>
+            <button className="delete-item-cart" onClick={ () => deleteProductInCart(productCart.id) } >
+              <BsFillTrash3Fill />
+            </button>
           </div>
         ))
       }
 
-      <div>
-        <p>Precio total: {totalPrice()}</p>
-        <button onClick={deleteCart} >Vaciar carrito</button>
+      <div className="info-cart">
+        <p className="text-info-cart">Precio total: ${totalPrice()}</p>
+        <button className="button-delete-cart" onClick={deleteCart} >Vaciar carrito</button>
       </div>
     </div>
   )
