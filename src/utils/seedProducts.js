@@ -1,3 +1,6 @@
+import db from "../db/db.js"
+import { addDoc, collection } from "firebase/firestore"
+
 const products = [
   {
     id: "Grt223",
@@ -54,33 +57,15 @@ const products = [
     category: "zapatillas"
   },
 ]
-/*
-  const promesa = new Promise( (resolve, reject)=> {
-    if(condicion){
-      resolve("se resolvio")
-    }else{
-      reject("se rechazo")
-    }
-  })
-*/
 
-//Obtener productos
-const getProducts = () => {
-  return new Promise((resolve, reject) => {
-    //Simulamos un retraso de red
-    setTimeout(() => {
-      resolve(products)
-    }, 2000)
+const seedProducts = () => {
+  const productsRef = collection(db, "products")
+  products.map(( { id, ...dataProduct } )=> {
+    addDoc(productsRef, dataProduct)
   })
+
+  console.log("productos subidos")
+  return
 }
 
-const getProduct = (idProduct) => {
-  return new Promise( (resolve)=> {
-    setTimeout(()=> {
-      const product = products.find( (product)=> product.id === idProduct )
-      resolve(product)
-    }, 2000)
-  })
-}
-
-export { getProducts, getProduct }
+seedProducts()
