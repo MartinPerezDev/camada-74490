@@ -5,13 +5,15 @@ import { CartContext } from "../../context/CartContext"
 import { Timestamp, addDoc, collection, setDoc, doc } from "firebase/firestore"
 import db from "../../db/db.js"
 import { Link } from "react-router-dom"
+import { toast } from "react-toastify"
 import "./checkout.css"
 
 const Checkout = () => {
   const [dataForm, setDataForm] = useState({
     fullname: "",
     phone: "",
-    email: ""
+    email: "",
+    repeatEmail: ""
   })
   const [orderId, setOrderId] = useState(null)
   const { cart, totalPrice, deleteCart } = useContext(CartContext)
@@ -28,8 +30,12 @@ const Checkout = () => {
       date: Timestamp.fromDate(new Date()),
       total: totalPrice()
     }
-
-    uploadOrder(order)
+    //verificamos que el email este correctamente en los 2 campos
+    if( dataForm.email === dataForm.repeatEmail ){
+      uploadOrder(order)
+    }else{
+      toast.error("Los emails deben de coincidir. 😠")
+    }
   }
 
   //subimos nuestra orden a firestore
@@ -40,6 +46,8 @@ const Checkout = () => {
         setOrderId(response.id)
       })
       .finally(()=> {
+        //mandamos una notificacion al usuario
+        toast.success("Gracias por su compra!!")
         //actualizamos el stock de cada producto
         updateStock()
       })
