@@ -86,3 +86,16 @@
   border-radius: 5px;
   color: #2ECC71;
 }
+.button-to-cart{
+  margin: 20px 0;
+  width: 300px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(9, 45, 6);
+  border: 1px solid rgb(159, 235, 144);
+  border-radius: 5px;
+  color: rgb(124, 203, 127);
+  font-size: 20px;
+}

@@ -5,6 +5,7 @@ import { CartContext } from "../../context/CartContext"
 import { Timestamp, addDoc, collection, setDoc, doc } from "firebase/firestore"
 import db from "../../db/db.js"
 import { Link } from "react-router-dom"
+import "./checkout.css"
 
 const Checkout = () => {
   const [dataForm, setDataForm] = useState({
@@ -55,13 +56,13 @@ const Checkout = () => {
   }
 
   return (
-    <div>
+    <div className="checkout">
       {
         orderId ? (
           <div>
             <h2>Orden enviada correctamente 😁</h2>
             <p>Guarde su número de seguimiento: {orderId}</p>
-            <Link to="/">Volver al inicio</Link>
+            <Link to="/" className="button-to-home">Volver al inicio</Link>
           </div>
         ) : (
           <FormCheckout dataForm={dataForm} handleChangeInput={handleChangeInput} handleSubmitForm={handleSubmitForm} />
